@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Toast.js Demo</title>
+  <script src="toast.js"></script>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      background: #f9fafb;
+      padding: 40px;
+      color: #111;
+    }
+    h1 {
+      margin-bottom: 20px;
+    }
+    button {
+      padding: 10px 20px;
+      margin: 8px;
+      font-size: 15px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      background-color: #333;
+      color: white;
+      transition: background 0.2s ease;
+    }
+    button:hover {
+      background-color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🔥 Toast.js — React Hot Toast Style</h1>
+  <p>Created by Vinay Chaudhary</p>
+
+  <button onclick="toast.success('Success! Everything worked.')">Show Success</button>
+  <button onclick="toast.error('Something went wrong!')">Show Error</button>
+  <button onclick="toast.loading('Loading... Please wait.', { autoCompleteAfter: 3000 })">Show Loading (auto done)</button>
+  <button onclick="toast.custom('<strong style=\'color:green\'>🌿 Custom HTML Toast</strong>')">Show Custom Toast</button>
+  <button onclick="triggerPromise()">Toast with Promise</button>
+
+  <script>
+    function triggerPromise() {
+      toast.promise(
+        new Promise((resolve, reject) => {
+          setTimeout(() => {
+            Math.random() > 0.5 ? resolve() : reject();
+          }, 2000);
+        }),
+        {
+          loading: 'Saving...',
+          success: 'Saved successfully!',
+          error: 'Failed to save!',
+        },
+        { position: 'top-center' }
+      );
+    }
+  </script>
+
+</body>
+</html>
