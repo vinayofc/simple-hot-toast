@@ -104,6 +104,18 @@
   <a href="https://buymeacoffee.com/vinay_dev" target="_blank">☕ Support me</a>
 </p>
 
+    <div class="demo-section">
+    <h2>🧪 Live Demo</h2>
+    <p>Click buttons to trigger toasts:</p>
+
+    <div class="button-grid">
+      <button onclick="toast.success('Success! Everything worked.')">Show Success</button>
+      <button onclick="toast.error('Something failed.')">Show Error</button>
+      <button onclick="toast.loading('Please wait...', { autoCompleteAfter: 3000 })">Show Loading</button>
+      <button onclick="toast.custom('<strong style=&quot;color:#1e40af&quot;>🌐 Custom HTML Toast</strong>', { position: 'bottom-center' })">Show Custom Toast</button>
+      <button onclick="triggerDemoPromise()">Show toast.promise</button>
+    </div>
+  </div>
 
 
   <h2>🚀 Installation</h2>
@@ -140,18 +152,7 @@ toast.loading("Please wait...", { autoCompleteAfter: 3000 });</code></pre>
   error: "Failed!"
 });</code></pre>
 
-  <div class="demo-section">
-    <h2>🧪 Live Demo</h2>
-    <p>Click buttons to trigger toasts:</p>
 
-    <div class="button-grid">
-      <button onclick="toast.success('✅ Success! Everything worked.')">Show Success</button>
-      <button onclick="toast.error('❌ Something failed.')">Show Error</button>
-      <button onclick="toast.loading('⏳ Please wait...', { autoCompleteAfter: 3000 })">Show Loading</button>
-      <button onclick="toast.custom('<strong style=&quot;color:#1e40af&quot;>🌐 Custom HTML Toast</strong>', { position: 'bottom-center' })">Show Custom Toast</button>
-      <button onclick="triggerDemoPromise()">Show toast.promise</button>
-    </div>
-  </div>
 
   <div class="footer">
   Built with ❤️ by Vinay Chaudhary · <a href="https://github.com/vinayofc/simple-hot-toast" target="_blank">GitHub</a> · 
