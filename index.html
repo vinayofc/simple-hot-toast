@@ -3,56 +3,94 @@
 <head>
   <meta charset="UTF-8" />
   <title>Toast.js Demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="toast.js"></script>
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       font-family: system-ui, sans-serif;
       background: #f9fafb;
-      padding: 40px;
       color: #111;
+      margin: 0;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
+
     h1 {
-      margin-bottom: 20px;
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
     }
+
+    .button-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      width: 100%;
+      max-width: 700px;
+    }
+
     button {
-      padding: 10px 20px;
-      margin: 8px;
-      font-size: 15px;
+      padding: 12px 16px;
+      font-size: 1rem;
       border: none;
-      border-radius: 6px;
-      cursor: pointer;
+      border-radius: 8px;
       background-color: #333;
       color: white;
+      cursor: pointer;
       transition: background 0.2s ease;
+      width: 100%;
     }
+
     button:hover {
       background-color: #555;
+    }
+
+    footer {
+      margin-top: 3rem;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.5rem;
+      }
+      button {
+        font-size: 0.95rem;
+      }
     }
   </style>
 </head>
 <body>
 
-  <h1>🔥 Toast.js — React Hot Toast Style</h1>
-  <p>Created by Vinay Chaudhary</p>
+  <h1>🔥 Toast.js — React Hot Toast Clone</h1>
 
-  <button onclick="toast.success('Success! Everything worked.')">Show Success</button>
-  <button onclick="toast.error('Something went wrong!')">Show Error</button>
-  <button onclick="toast.loading('Loading... Please wait.', { autoCompleteAfter: 3000 })">Show Loading (auto done)</button>
-  <button onclick="toast.custom('<strong style=\'color:green\'>🌿 Custom HTML Toast</strong>')">Show Custom Toast</button>
-  <button onclick="triggerPromise()">Toast with Promise</button>
+  <div class="button-grid">
+    <button onclick="toast.success('Success! Operation completed.')">✅ Success Toast</button>
+    <button onclick="toast.error('Oops! Something went wrong.')">❌ Error Toast</button>
+    <button onclick="toast.loading('Processing...', { autoCompleteAfter: 3000 })">⏳ Loading (auto-finish)</button>
+    <button onclick="toast.custom('<strong style=\'color:#1e40af\'>💡 Custom HTML Toast</strong>', { position: 'bottom-center' })">🌐 Custom HTML Toast</button>
+    <button onclick="triggerPromise()">📦 Toast with Promise</button>
+  </div>
+
+  <footer>
+    Click any button to trigger toast messages<br> Built with <strong>toast.js</strong>
+  </footer>
 
   <script>
     function triggerPromise() {
       toast.promise(
-        new Promise((resolve, reject) => {
-          setTimeout(() => {
-            Math.random() > 0.5 ? resolve() : reject();
-          }, 2000);
-        }),
+        fetch('https://jsonplaceholder.typicode.com/posts/1'),
         {
-          loading: 'Saving...',
-          success: 'Saved successfully!',
-          error: 'Failed to save!',
+          loading: 'Fetching data...',
+          success: () => 'Fetched successfully!',
+          error: () => 'Failed to fetch.'
         },
         { position: 'top-center' }
       );
